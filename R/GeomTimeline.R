@@ -5,7 +5,6 @@
 #'
 #' @import ggplot2
 #'
-#' @export
 GeomTimeline <- ggplot2::ggproto("GeomTimeline", ggplot2::GeomPoint,
                                  # <a character vector of required aesthetics>
                                  required_aes = c("x","y"),

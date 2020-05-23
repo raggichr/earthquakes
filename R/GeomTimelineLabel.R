@@ -5,7 +5,6 @@
 #'
 #' @import ggplot2
 #'
-#' @export
 GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::GeomText,
                                       #<character vector of required aesthetics>
                                       required_aes = c("x", "y", "tags"),

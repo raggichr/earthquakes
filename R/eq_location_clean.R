@@ -14,8 +14,12 @@
 #'
 #'@examples
 #'\dontrun{
-#' filename<-system.file("data","earthquakes_data.txt.zip",package="capstone")
-#' eq_location_clean(eq_clean_data(eq_data_read(filename)))
+#' filename <- system.file("extdata", "signif.txt", package = "earthquakes")
+#' library(readr)
+#' eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
+#' eq_data <- eq_location_clean(eq_datf = eq_data_raw)
+#' head(eq_data_raw$LOCATION_NAME)
+#' head(eq_data$LOCATION_NAME)
 #' }
 #'
 #' @export

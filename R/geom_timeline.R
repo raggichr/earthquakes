@@ -18,6 +18,27 @@
 #'
 #' @import ggplot2
 #'
+#' @examples
+#' \dontrun{
+#' filename <- system.file("extdata", "signif.txt", package = "earthquakes")
+#' library(readr)
+#' eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
+#' eq_data <- eq_clean_data(eq_raw = eq_data_raw)
+#' library(ggplot2)
+#' library(ggthemes)
+#' eq_data %>%
+#'     dplyr::filter(DATE >= "1995-01-01" &
+#'                       DATE <= "2018-01-01" &
+#'                       COUNTRY %in% c("USA","ITALY","MEXICO")) %>%
+#'     ggplot(aes(x = DATE,
+#'                y = COUNTRY,
+#'                colour = DEATHS,
+#'                size = EQ_PRIMARY)) +
+#'     geom_timeline() +
+#'     theme_tufte() +
+#'     theme(legend.position = "right")
+#' }
+#'
 #' @export
 geom_timeline <- function(mapping = NULL,
                           data = NULL,

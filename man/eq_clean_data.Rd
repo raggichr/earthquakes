@@ -25,5 +25,13 @@ returns a clean data frame. The clean data frame should have the following:
 and converts names to title case (as opposed to all caps). This will be needed later for annotating visualizations.
 }
 \examples{
+\dontrun{
+filename <- system.file("extdata", "signif.txt", package = "earthquakes")
+library(readr)
+eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
+eq_data <- eq_clean_data(eq_raw = eq_data_raw)
+head(eq_data_raw$LOCATION_NAME)
+head(eq_data$LOCATION_NAME)
+}
 
 }
