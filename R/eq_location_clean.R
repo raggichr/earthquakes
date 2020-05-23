@@ -24,7 +24,8 @@ eq_location_clean <- function(eq_datf){
     LOCATION_NAME <- NULL
 
     eq_datf <- eq_datf %>%
-        dplyr::mutate(LOCATION_NAME = stringi::stri_trans_totitle(LOCATION_NAME))
+        dplyr::mutate(LOCATION_NAME = trimws(gsub(pattern = ".*:", replacement = "", LOCATION_NAME)),
+                      LOCATION_NAME = stringi::stri_trans_totitle(LOCATION_NAME))
 
     return(eq_datf)
 }
