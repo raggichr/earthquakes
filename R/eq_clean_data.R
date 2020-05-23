@@ -6,10 +6,12 @@
 #'
 #' The \code{eq_clean_data()} function takes the raw NOAA data frame and
 #' returns a clean data frame. The clean data frame should have the following:
-#' 1. A date column created by uniting the year, month, day and converting it to the Date class.
-#' 2. LATITUDE and LONGITUDE columns converted to numeric class.
-#' 3. In addition, a LOCATION_NAME column by stripping out the country name (including the colon)
-#' and converts names to title case (as opposed to all caps). This will be needed later for annotating visualizations.
+#' \enumerate{
+#'   \item A date column created by uniting the year, month, day and converting it to the Date class.
+#'   \item LATITUDE and LONGITUDE columns converted to numeric class.
+#'   \item In addition, a LOCATION_NAME column by stripping out the country name (including the colon)
+#'   and converts names to title case (as opposed to all caps). This will be needed later for annotating visualizations.
+#' }
 #'
 #' @param eq_raw the raw NOAA earthquake dataset as a data frame that contains location names written in upper case.
 #'

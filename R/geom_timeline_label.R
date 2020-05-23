@@ -26,6 +26,7 @@
 #' library(readr)
 #' eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
 #' eq_data <- eq_clean_data(eq_raw = eq_data_raw)
+#' library(dplyr)
 #' library(ggplot2)
 #' library(ggthemes)
 #' eq_data %>%

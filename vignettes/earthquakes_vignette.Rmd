@@ -1,0 +1,88 @@
+---
+title: "Time Line and Map of Earthquakes for package: earthquakes"
+author: "Christian Raggi"
+date: "5/23/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Time Line and Map of Earthquakes for package: earthquakes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Load package 'earthquakes'
+
+```{r load package}
+library(earthquakes)
+```
+
+## How to read the data into the R environment?
+
+Run the following code:
+
+```{r earthquakes dataset}
+filename <- system.file("extdata", "signif.txt", package = "earthquakes")
+library(readr)
+eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
+eq_data <- eq_clean_data(eq_raw = eq_data_raw)
+head(eq_data_raw$LOCATION_NAME)
+head(eq_data$LOCATION_NAME)
+```
+
+## How to make a time line plot of earthquakes for different countries?
+
+See the R code below, for example:
+
+```{r time line}
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+eq_data %>%
+    dplyr::filter(DATE >= "1995-01-01" & 
+                      DATE <= "2018-01-01" &
+                      COUNTRY %in% c("USA","ITALY","MEXICO")) %>%
+    ggplot(aes(x = DATE,
+               y = COUNTRY,
+               colour = DEATHS,
+               size = EQ_PRIMARY)) +
+    geom_timeline() +
+    geom_timeline_label(aes(x = DATE, 
+                            y = COUNTRY, 
+                            tags = LOCATION_NAME, 
+                            number = 3, 
+                            max_aes = EQ_PRIMARY)) +
+    theme_tufte() +
+    theme(legend.position = "right")
+```
+
+
+## How to map the earthquakes?
+
+Each earthquake should be shown with a circle, and the radius of the circle should be proportional to the earthquake's magnitude (EQ_PRIMARY). Your code, assuming you have the earthquake data saved in your working directory as "earthquakes.tsv.gz", should be able to be used in the following way:
+
+```{r map}
+library(dplyr)
+library(lubridate)
+library(leaflet)
+eq_data %>%
+    filter(COUNTRY %in% "ITALY" &
+               lubridate::year(DATE) >= 2000) -> eq_data_sample
+
+eq_data_sample %>%
+    eq_clean_data() %>%
+    filter(COUNTRY %in% "ITALY" & lubridate::year(DATE) >= 2000) %>%
+    eq_map(annot_col = "DATE")
+
+eq_data_sample %>%
+    eq_clean_data() %>%
+    filter(COUNTRY %in% "ITALY" & lubridate::year(DATE) >= 2000) %>%
+    mutate(popup_text = eq_create_label(.)) %>%
+    eq_map(annot_col = "popup_text")
+```
+
