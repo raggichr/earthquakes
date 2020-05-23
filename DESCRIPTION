@@ -1,12 +1,20 @@
 Package: earthquakes
 Type: Package
-Title: What the Package Does (Title Case)
+Title: MSDR Capstone: Build an R Package
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Christian Raggi <raggichr@somewhere.net>
+Maintainer: Christian Raggi <raggichr@somewhere.net>
+Description: This capstone project will be centered around a dataset obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA) on significant earthquakes around the world. This dataset contains information about 5,933 earthquakes over an approximately 4,000 year time span.    The overall goal of the capstone project is to integrate the skills you have developed over the courses in this Specialization and to build a software package that can be used to work with the NOAA Significant Earthquakes dataset. This dataset has a substantial amount of information embedded in it that may not be immediately accessible to people without knowledge of the intimate details of the dataset or of R. Your job is to provide the tools for processing and visualizing the data so that others may extract some use out of the information embedded within.    The ultimate goal of the capstone is to build an R package that will contain features and will satisfy a number of requirements that will be laid out in the subsequent Modules. You may want to begin organizing your package and insert various features as you go through the capstone project. 
+Depends: R (>= 4.0.0)
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
+Imports:
+    dplyr (>= 0.8.5),
+    tidyr (>= 1.0.3),
+    ggplot2 (>= 3.3.0),
+    leaflet (>= 2.0.3),
+    stringi (>= 1.4.6),
+    stringr (>= 1.4.0),
+    lubridate (>= 1.7.8)

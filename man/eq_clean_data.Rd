@@ -13,7 +13,12 @@ eq_clean_data(eq_raw)
 returns a clean data frame of the NOAA earthquake dataset.
 }
 \description{
-Takes raw NOAA data frame and returns a clean data frame. The clean data frame should have the following:
+The dataset is obtained from the U.S. National Oceanographic and Atmospheric Administration (NOAA)
+on significant earthquakes around the world. This dataset contains information about 5,933 earthquakes over an
+approximately 4,000 year time span.
+
+The \code{eq_clean_data()} function takes the raw NOAA data frame and
+returns a clean data frame. The clean data frame should have the following:
 1. A date column created by uniting the year, month, day and converting it to the Date class.
 2. LATITUDE and LONGITUDE columns converted to numeric class.
 3. In addition, a LOCATION_NAME column by stripping out the country name (including the colon)

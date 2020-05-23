@@ -14,8 +14,6 @@
 #' @param inherit.aes will indicate the default aesthetics overridng
 #' @param ... layer's other arguments
 #'
-#' @inheritParams ggplot2::geom_point
-#'
 #' @return a plot timeline with earthquakes of a given country or list of countries.
 #'
 #' @import ggplot2

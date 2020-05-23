@@ -25,19 +25,21 @@ eq_create_label <- function(eq_data_clean = NULL){
               any("TOTAL_DEATHS" %in% all_columns))
 
     # create the "popup_text" without using NA Labels
-    popup_vals <- eq_data_clean %>% dplyr::select(c("LOCATION_NAME","EQ_PRIMARY","TOTAL_DEATHS")) %>%
-        dplyr::mutate(LOCATION_NAME = ifelse(is.na(LOCATION_NAME), LOCATION_NAME,
-                                             paste0("<strong>Location:</strong> ", LOCATION_NAME,"<br>"))) %>%
-        dplyr::mutate(EQ_PRIMARY = ifelse(is.na(EQ_PRIMARY), EQ_PRIMARY,
-                                          paste0("<strong>Magnitude:</strong> ", EQ_PRIMARY,"<br>"))) %>%
-        dplyr::mutate(TOTAL_DEATHS = ifelse(is.na(TOTAL_DEATHS), TOTAL_DEATHS,
-                                              paste0("<strong>Total deaths:</strong> ", TOTAL_DEATHS))) %>%
+    popup_vals <- eq_data_clean %>% dplyr::select(c(.data[["LOCATION_NAME"]],
+                                                    .data[["EQ_PRIMARY"]],
+                                                    .data[["TOTAL_DEATHS"]])) %>%
+        dplyr::mutate(LOCATION_NAME = ifelse(is.na(.data[["LOCATION_NAME"]]), .data[["LOCATION_NAME"]],
+                                             paste0("<strong>Location:</strong> ", .data[["LOCATION_NAME"]],"<br>"))) %>%
+        dplyr::mutate(EQ_PRIMARY = ifelse(is.na(.data[["EQ_PRIMARY"]]), .data[["EQ_PRIMARY"]],
+                                          paste0("<strong>Magnitude:</strong> ", .data[["EQ_PRIMARY"]],"<br>"))) %>%
+        dplyr::mutate(TOTAL_DEATHS = ifelse(is.na(.data[["TOTAL_DEATHS"]]), .data[["TOTAL_DEATHS"]],
+                                              paste0("<strong>Total deaths:</strong> ", .data[["TOTAL_DEATHS"]]))) %>%
         tidyr::unite("popup_values", c("LOCATION_NAME","EQ_PRIMARY","TOTAL_DEATHS"), sep = "") %>%
-        dplyr::mutate(popup_values = stringr::str_replace_all(popup_values, "[,]*NA[,]*", "")) %>%
-        dplyr::mutate(popup_values = ifelse(popup_values == "", "All Values are NA", popup_values))
+        dplyr::mutate(popup_values = stringr::str_replace_all(.data[["popup_values"]], "[,]*NA[,]*", "")) %>%
+        dplyr::mutate(popup_values = ifelse(.data[["popup_values"]] == "", "All Values are NA", .data[["popup_values"]]))
 
     # convert tbl_df to a character vector
-    popup_vals <- dplyr::collect(dplyr::select(popup_vals,c("popup_values")))[[1]]
+    popup_vals <- dplyr::collect(dplyr::select(popup_vals, .data[["popup_values"]]))[[1]]
 
     return(popup_vals)
 }

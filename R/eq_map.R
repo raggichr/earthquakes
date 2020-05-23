@@ -1,6 +1,6 @@
 #' @title Earthquakes Data in an Interactive Map.
 #'
-#' @description The function  \coe{eq_map()} that takes an argument data containing
+#' @description The function  \code{eq_map()} that takes an argument data containing
 #' the filtered data frame with earthquakes to visualize. The function maps the
 #' epicenters (\code{LATITUDE/LONGITUDE}) and annotates each point with in pop up window
 #' containing annotation data stored in a column of the data frame.

@@ -13,7 +13,7 @@ GeomTimelineLabel <- ggplot2::ggproto("GeomTimelineLabel", ggplot2::GeomText,
                                       default_aes = ggplot2::aes(number = NULL,
                                                                  max_aes = NULL),
                                       #<a function used to draw the key in the legend>
-                                      draw_key = draw_key_text,
+                                      # draw_key = draw_key_text,
                                       ## Function that returns a grid grob that will
                                       ## be plotted (this is where the real work occurs)
                                       draw_panel = function(data, panel_scales, coord) {
