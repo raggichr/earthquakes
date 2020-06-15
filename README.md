@@ -20,10 +20,10 @@ install_github("raggichr/earthquakes")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-# load my earthquakes library
+# load my earthquakes package
 library(earthquakes)
 
-# read data from my library
+# data reading from my package
 filename <- system.file("extdata", "signif.txt", package = "earthquakes")
 library(readr)
 eq_data_raw <- readr::read_delim(file = filename, delim = "\t")
