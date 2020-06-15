@@ -2,6 +2,7 @@
 # earthquakes
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.com/raggichr/earthquakes.svg?branch=master)](https://travis-ci.com/raggichr/earthquakes)
 <!-- badges: end -->
 
 The goal of earthquakes is to ...
