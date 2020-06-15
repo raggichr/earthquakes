@@ -39,7 +39,7 @@ head(eq_data$LOCATION_NAME)
 
 See the R code below, for example:
 
-```{r time line}
+```{r time line, fig.width=7}
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
@@ -66,7 +66,7 @@ eq_data %>%
 
 Each earthquake should be shown with a circle, and the radius of the circle should be proportional to the earthquake's magnitude (EQ_PRIMARY). Your code, assuming you have the earthquake data saved in your working directory as "earthquakes.tsv.gz", should be able to be used in the following way:
 
-```{r map}
+```{r map, fig.width=7}
 library(dplyr)
 library(lubridate)
 library(leaflet)
